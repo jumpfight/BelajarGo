@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .title }}</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f0f0f0; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>{{ .title }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nama</th>
+                <th>Jurusan</th>
+                <th>Angkatan</th>
+                <th>IPK</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .mahasiswa }}
+            <tr>
+                <td>{{ .ID }}</td>
+                <td>{{ .Nama }}</td>
+                <td>{{ .Jurusan }}</td>
+                <td>{{ .Angkatan }}</td>
+                <td>{{ printf "%.2f" .IPK }}</td>
+            </tr>
+            {{ else }}
+            <tr><td colspan="5" style="text-align:center;">Data belum tersedia</td></tr>
+            {{ end }}
+        </tbody>
+    </table>
+</body>
+</html>
