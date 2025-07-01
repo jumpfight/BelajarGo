@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-    db, err := sql.Open("mysql", "IT:indofood2016@tcp(127.0.0.1:3306)/dbgo")
+    db, err := sql.Open("mysql", "IT:--@tcp(127.0.0.1:3306)/dbgo")
     if err != nil {
         log.Fatal("Koneksi DB gagal:", err)
     }
@@ -35,6 +35,7 @@ func main() {
         auth.DELETE("/mahasiswa/:id", handler.DeleteMahasiswa(db))
     }
 
+    // Dashboard
     router.GET("/dashboard", handler.ShowDashboard(db))
 
     router.Run(":8080")
